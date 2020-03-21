@@ -2,18 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Link} from "@reach/router";
 
-const PlayerForm = () => {
+const PlayerForm = (props) => {
     const [form, setForm] = useState({
         name: "",
         position: "",
         submitted: false
     });
 
-    const isFormValid = {
-        name: false,
-        postion:false,
-        val: ""
-    }
 
     const onSubmitHandler = e => {
         e.preventDefault();
@@ -28,7 +23,7 @@ const PlayerForm = () => {
                 position: "",
                 submitted: true
             });
-            window.location.href = "/"
+            props.navigate("/")
         })
         .catch(err => console.log(err));
     };
@@ -36,7 +31,7 @@ const PlayerForm = () => {
     return (
         <div>
             <Link to = "/">Home</Link>
-            <h2>Add a new bruh:</h2>
+            <h2>Add a new bruh!</h2>
             <form onSubmit={onSubmitHandler}>
                 {form.submitted && "The new playa has been successfully added!"}
                 <p>
@@ -54,9 +49,9 @@ const PlayerForm = () => {
                     )}
                 </p>
                 <Link to="/"><button>Cancel</button></Link>
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={form.position.length > 2 && form.name.length > 2 ? false : true}>Submit</button>
+                
             </form>
-
         </div>
     )
 }
