@@ -38,7 +38,7 @@ const PlayersList = () => {
                 margin: "10px auto"
             }}>
                 <thead style = {{
-                    backgroundColor: "navy",
+                    backgroundColor: "black",
                     color: "white",
                     fontSize: "25px",
                     marginBottom: "5px"
